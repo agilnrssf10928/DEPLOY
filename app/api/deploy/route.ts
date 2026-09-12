@@ -14,7 +14,7 @@ export async function POST(req: Request) {
 
   const VERCEL_TOKEN = process.env.DEPLOY_VERCEL_TOKEN
   if (!VERCEL_TOKEN) {
-    return Response.json({ error: "Server salah config" }, { status: 500 })
+    return Response.json({ error: "Server salah config (DEPLOY_VERCEL_TOKEN belum di-set)" }, { status: 500 })
   }
 
   const [owner, repoName] = repoFullName.split("/")
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     const deployRes = await fetch("https://api.vercel.com/v13/deployments", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${DEPLOY_VERCEL_TOKEN}`,
+        Authorization: `Bearer ${VERCEL_TOKEN}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
