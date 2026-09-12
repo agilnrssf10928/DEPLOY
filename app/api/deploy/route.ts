@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     const deployRes = await fetch("https://api.vercel.com/v13/deployments", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${VERCEL_TOKEN}`,
+        Authorization: `Bearer ${DEPLOY_VERCEL_TOKEN}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
