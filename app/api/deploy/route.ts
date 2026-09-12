@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     return Response.json({ error: "Format repo invalid" }, { status: 400 })
   }
 
-  const VERCEL_TOKEN = process.env.VERCEL_TOKEN
+  const VERCEL_TOKEN = process.env.DEPLOY_VERCEL_TOKEN
   if (!VERCEL_TOKEN) {
     return Response.json({ error: "Server salah config" }, { status: 500 })
   }
